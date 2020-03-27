@@ -2,6 +2,12 @@
 function getTasks(){
     $connection = getConnection();
 
+
+
+    if ( isset($_POST['do_post']) ) {
+        mysqli_query($connection, "INSERT INTO `tasks` (`name`, `email`, `text`, `status`) VALUES ('" . $_POST['name'] . "', '" . $_POST['email'] . "', '" . $_POST['text'] . "', '" . "Не выполнено" . "');");
+    }
+
     $key_array = array('id','name','email','text','status');
     $sort_array = array('asc','desc');
 

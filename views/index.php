@@ -5,7 +5,6 @@ include "header.php";
 
     $page = $array['page'];
     $sort = $array['sort'];
-    $sortb = $sort;
     $total_pages = $array['total_pages'];
     $key = $array['key'];
     echo '<div class="container mb-5">';
@@ -63,35 +62,27 @@ echo '</div>';
 <div id="add-task-form" class="container">
     <h3>Добавить задачу</h3>
     <div class="container">
-        <form method="POST" action="/#add-comment-form">
-            <?php
-            if ( isset($_POST['do_post']) ) {
-                echo '<span style="color: green; font-weight: bold; margin-bottom: 10px; display: block;">Task was added successfully! </span>';
 
-                mysqli_query($connection, "INSERT INTO `tasks` (`name`, `email`, `text`, `status`) VALUES ('" . $_POST['name']."', '" .$_POST['email']."', '".$_POST['text']."', '". "Не выполнено" . "');");
-
-            }
-            ?>
+        <?php
+        if ( isset($_POST['do_post']) ) {
+            echo '<span style="color: green; font-weight: bold; margin-bottom: 10px; display: block;">Task was added successfully! </span>';
+        }
+        ?>
+        <form method="POST" action="/?page=<?php echo $page?>&key=<?php echo $key?>&sort=<?php echo $sort?>">
             <div class="form-group">
                 <div class="form-row">
                     <div class="col-md-6">
-                        <label for="name">
                             <input class="form-control" type="text" name="name" placeholder="Name" required>
-                        </label>
                     </div>
                     <div class="col-md-6">
-                        <label for="email">
                             <input class="form-control" type="email" name="email" placeholder="Email" required>
-                        </label>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-row">
                     <div class="col-md-12">
-                        <label for="text">
                             <textarea class="form-control" name="text" placeholder="Task text ..." required></textarea>
-                        </label>
                     </div>
                 </div>
             </div>
