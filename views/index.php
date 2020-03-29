@@ -13,12 +13,12 @@ include "header.php";
     </div>';
     print "<table class='table table-bordered table-striped'>";
     print "<thead>";
-    print "<tr>
-       <th class='col-md-2'><a href=\"/?page=$page&key=name&sort=$sort\">Имя пользователя</a></th>
-       <th class='col-md-2'><a href=\"/?page=$page&key=email&sort=$sort\">Email</a></th>
-       <th class='col-md-2'><a href=\"/?page=$page&key=text&sort=$sort\">Текст</a></th>
-       <th class='col-md-2'><a href=\"/?page=$page&key=status&sort=$sort\">Статус</a>
-       </th></tr>";
+        echo '<tr>
+                           <th class="col-md-2"><a href="/?page=' . $page . getSortURL("name") . '">Имя пользователя</a></th>
+                           <th class="col-md-2"><a href="/?page=' . $page . getSortURL("email") . '">Email</a></th>
+                           <th class="col-md-2"><a href="/?page=' . $page . getSortURL("text") . '">Текст задачи</a></th>
+                           <th class="col-md-2"><a href="/?page=' . $page . getSortURL("status") . '">Статус</a></th>
+        </tr>';
     print "</thead>";
 print "<tbody>";
 // Отформатировать и вывести каждую строку таблицы

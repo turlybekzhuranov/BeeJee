@@ -8,30 +8,10 @@ function getTasks(){
         mysqli_query($connection, "INSERT INTO `tasks` (`name`, `email`, `text`, `status`) VALUES ('" . $_POST['name'] . "', '" . $_POST['email'] . "', '" . $_POST['text'] . "', '" . "Не выполнено" . "');");
     }
 
-    $key_array = array('id','name','email','text','status');
-    $sort_array = array('asc','desc');
-
-    $key = "id";
-    $sort = "asc";
-    if ( isset($_GET['key']) )
-    {
-        $key=$_GET['key'];
-        $sort=$_GET['sort'];
-
-        if($sort=='asc')
-        {
-            $sort='desc';
-        }
-        else
-        {
-            $sort='asc';
-
-        }
-    }
-
-
+    require 'models/sort.php';
+    
     $per_page = 3;
-    $page = 1;
+    $page = (int) $_GET['page'];
 
     if ( isset($_GET['page']) ){
         $page = (int) $_GET['page'];
